@@ -27,37 +27,39 @@ const estilos = {
         font-size: 24px;
         line-height: 29px;
     `,
+
     body: `
-        font-weight: 400;
         font-size: 20px;
-        line-height: 24px;
+        font-weight: 400;
+        line-height: 24px; 
     `,
     bodyBold: `
-        font-weight: 700;
         font-size: 20px;
-        line-height: 24px;
-    `,
+        font-weight: 700;
+        line-height: 24px; 
+    `,    
     body2: `
-        font-weight: 400;
         font-size: 16px;
-        line-height: 20px;
+        font-weight: 400;
+        line-height: normal; 
     `,
     body2Bold: `
-        font-weight: 700;
         font-size: 16px;
-        line-height: 20px;
+        font-weight: 700;
+        line-height: 20px; 
     `,
     legenda: `
-        font-weight: 400;
         font-size: 14px;
-        line-height: 17px;
+        font-weight: 400;
+        line-height: 17px; 
     `
 }
-
-export const Tipografia = ({ variante, componente, children }) => {
+export const Tipografia = ({ variante, componente, children}) => {
     const tag = componentes[componente]
     const ComponenteUtilizado = styled[tag]`${estilos[variante]}`
-    return (<ComponenteUtilizado>
-        {children}
-    </ComponenteUtilizado>)
+
+    return (
+        <ComponenteUtilizado>
+            { children }
+        </ComponenteUtilizado>)
 }

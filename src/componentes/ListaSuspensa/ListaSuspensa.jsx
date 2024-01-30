@@ -1,7 +1,5 @@
 import styled from "@emotion/styled"
 import { useState } from "react"
-import { ItemListaSuspensaEstilizado } from "./ItemListaSuspensaEstilizado"
-import { ListaSuspensaEstilizada } from "./ListaSuspensaEstilizada"
 
 const LabelEstilizada = styled.label`
     display: block;
@@ -38,13 +36,47 @@ const BotaoEstilizado = styled.button`
     }
 `
 
-export const ListaSupensa = ({ titulo, opcoes }) => {
-    const [estaAberta, alternarVisibilidade] = useState(false)
+const ListaSuspensaEstilizada = styled.ul`
+    display: block;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0;
+    cursor: pointer;
+    background-color: white;
+    box-sizing: border-box;
+    list-style: none;
+    border-radius: 18px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border: 1px solid ${props => props.theme.cores.neutras.a};
+    border-top: none;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+`
 
+const OpcaoEstilizada = styled.li`
+    font-size: 14px;
+    padding: ${props => props.theme.espacamentos.xs} 0;
+    border-bottom: 1px solid ${props => props.theme.cores.neutras.b};
+    &:last-child {
+        border: none;
+    }
+    color: ${props => props.focoAtivo ? props.theme.cores.focus : 'inherit'};
+    &:hover {
+        color: ${props => props.theme.cores.focus};
+    }
+`
+
+export const ListaSuspensa = ({ titulo, opcoes }) => {
+    const [estaAberta, alternarVisibilidade] = useState(false)
+    
     const [opcaoFocada, setOpcaoFocada] = useState(null);
+
     const [opcaoSelecionada, setOpcaoSelecionada] = useState(null);
 
-    const manipularTeclaDoTeclado = (evento) => {
+    const manipularTeclaDotTeclado = (evento) => {
         alternarVisibilidade(true)
         switch (evento.key) {
             case 'ArrowDown':
@@ -53,12 +85,10 @@ export const ListaSupensa = ({ titulo, opcoes }) => {
                     if (focoAntigo == null) {
                         return 0;
                     }
-                    if (focoAntigo === (opcoes.length - 1)) {
-                        return opcoes.length - 1
-                    }
-                    return focoAntigo += 1
+                    return focoAntigo !== opcoes.length - 1 ? focoAntigo += 1 : focoAntigo
                 })
                 break;
+
             case 'ArrowUp':
                 evento.preventDefault();
                 setOpcaoFocada(focoAntigo => {
@@ -68,21 +98,22 @@ export const ListaSupensa = ({ titulo, opcoes }) => {
                     return focoAntigo -= 1
                 })
                 break;
-                case 'Enter':
-                    evento.preventDefault();
-                    setOpcaoFocada(null)
-                    alternarVisibilidade(false)
-                    setOpcaoSelecionada(opcoes[opcaoFocada])
-                    break;
-                case 'Tab':
-                    setOpcaoFocada(null)
-                    alternarVisibilidade(false)
-                    break;
-                case 'Escape':
-                    evento.preventDefault();
-                    setOpcaoFocada(null)
-                    alternarVisibilidade(false)
-                    break;
+
+            case 'Enter':
+                evento.preventDefault();
+                setOpcaoFocada(null);
+                alternarVisibilidade(false)
+                setOpcaoSelecionada(opcoes[opcaoFocada])
+                break;
+            
+            case 'Tab':
+            case 'Space':
+                evento.preventDefault();
+                setOpcaoFocada(null);
+                alternarVisibilidade(false)
+                setOpcaoSelecionada(null)
+                break;
+        
             default:
                 break;
         }
@@ -93,23 +124,21 @@ export const ListaSupensa = ({ titulo, opcoes }) => {
         <BotaoEstilizado
              estaAberta={estaAberta}
              onClick={() => alternarVisibilidade(!estaAberta)}
-             onKeyDown={manipularTeclaDoTeclado}
+             onKeyDown={manipularTeclaDotTeclado}
         >
             <div>
-                { opcaoSelecionada ? opcaoSelecionada.text : 'Selecione' } 
+                {opcaoSelecionada ? opcaoSelecionada.text : 'Selecione'}
             </div>
             <div>
                 <span>{estaAberta ? '▲' : '▼'}</span>
             </div>
         </BotaoEstilizado>
         {estaAberta && <ListaSuspensaEstilizada>
-            {opcoes.map((opcao, index) => <ItemListaSuspensaEstilizado
-                key={opcao.value}
-                focoAtivo={index === opcaoFocada}
-                onClick={() => setOpcaoSelecionada(opcao)}
-                >
-                {opcao.text}
-            </ItemListaSuspensaEstilizado>)}
+                {opcoes.map((opcao, index) => <OpcaoEstilizada key={opcao.value}
+                                                               focoAtivo={index === opcaoFocada}
+                                                               onClick={() => setOpcaoSelecionada(opcao)}>
+                                                    {opcao.text}
+                                              </OpcaoEstilizada>)}
         </ListaSuspensaEstilizada>}
     </LabelEstilizada>)
 }

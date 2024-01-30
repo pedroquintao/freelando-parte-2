@@ -1,4 +1,5 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
+
 
 const BotaoPrimarioEstilizado = styled.button`
     background: ${props => props.theme.cores.primarias.b};
@@ -20,7 +21,7 @@ const BotaoPrimarioEstilizado = styled.button`
     }
 `
 const BotaoSecundarioEstilizado = styled.button`
-    background: transparent;
+    background:  #F8F8FD;
     color: ${props => props.theme.cores.primarias.b};
     border: 2px solid ${props => props.theme.cores.primarias.b};
     border-radius: ${props => props.theme.espacamentos.s};
