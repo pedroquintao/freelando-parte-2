@@ -42,8 +42,8 @@ const estadosBrasileiros = [
 const PaginaInicial = () => {
   return (
     <ProvedorTema>
-      <Cabecalho />
       <Estilos />
+      <Cabecalho />
       <Container style={{ margin: '80px 0'}}>
         <Row justify="center">
           <Col lg={6} md={8} sm={12}>
