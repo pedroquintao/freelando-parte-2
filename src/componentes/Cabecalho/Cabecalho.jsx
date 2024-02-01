@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import logoBranco from "../../assets/Logo branco.svg"
 import { Col, Container, Row } from "react-grid-system";
 import { FreelandoLogo } from "../Icones/FreelandoLogo";
 
@@ -15,21 +14,12 @@ import { FreelandoLogo } from "../Icones/FreelandoLogo";
         cursor: pointer;
     `
 
-export const Cabecalho = () => {
+export const Cabecalho = ({children}) => {
     
     
     return (
         <DivCabecalho>
-            <Container>
-                <Row align="center" justify="between">
-                    <Col lg={4} md={4} sm={4}>
-                        <FreelandoLogo />
-                    </Col>
-                    <Col style={{textAlign: 'right'}} lg={3} md={3} sm={3}>
-                        <Login>Login</Login>
-                    </Col>
-                </Row>
-            </Container>
+            {children}
         </DivCabecalho>
     )
 }

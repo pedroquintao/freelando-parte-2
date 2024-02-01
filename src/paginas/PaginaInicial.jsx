@@ -8,6 +8,8 @@ import { Tipografia } from "../componentes/Tipografia/Tipografia";
 import { Rodape } from "../componentes/Rodape/Rodape";
 import { Botao } from "../componentes/Botao/Botao";
 import { Col, Container, Row } from "react-grid-system";
+import { FreelandoLogo } from "../componentes/Icones/FreelandoLogo";
+import { Link } from "../componentes/Link/Link";
 
 const estadosBrasileiros = [
   { "text": "Acre", "value": "AC" },
@@ -43,7 +45,6 @@ const PaginaInicial = () => {
   return (
     <ProvedorTema>
       <Estilos />
-      <Cabecalho />
       <Container style={{ margin: '80px 0'}}>
         <Row justify="center">
           <Col lg={6} md={8} sm={12}>
@@ -96,7 +97,6 @@ const PaginaInicial = () => {
           </Col>
         </Row>
       </Container>
-      <Rodape />
     </ProvedorTema>
   );
 }
