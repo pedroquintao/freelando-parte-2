@@ -3,6 +3,7 @@ import PaginaInicial from "../paginas/PaginaInicial";
 import SelecaoDoCliente from "../paginas/cadastro/SelecaoDoCliente";
 import LayoutBaseDeCadastro from "../paginas/cadastro/LayoutBaseDeCadastro";
 import LayoutBase from "../paginas/LayoutBase";
+import SelecaoDeInteresses from "../paginas/cadastro/SelecaoDeInteresses";
 
 export const router = createBrowserRouter ([
   {
@@ -18,8 +19,8 @@ export const router = createBrowserRouter ([
           element: <SelecaoDoCliente />
         },
         {
-          path: 'cliente',
-          element: <h1>Insteresses</h1>
+          path: 'interesses',
+          element: <SelecaoDeInteresses />
         },
         {
           path: 'dados-pessoais',
