@@ -3,25 +3,45 @@ import { Tipografia } from "../Tipografia/Tipografia";
 import { useState } from "react";
 
 
+// const DivEstilizada = styled.div`
+//     display: flex;
+//     `
+// const InputRadio = styled.input`
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 36px;
+//     background-color: ${props => props.selecionado? '#F00' : '#FFF'};
+//     &:hover {
+//         border-color: red;
+//     }
+//     &:focus {
+//         border-color: red;
+//     }
+//     `
 const DivEstilizada = styled.div`
-    display: flex;
-    `
+display: flex;
+`
 const InputRadio = styled.input`
-    width: 36px;
-    height: 36px;
-    border-radius: 36px;
-    background-color: ${props => props.selecionado? props.theme.cores.primaria.a : props.theme.cores.primaria.b};
-    &:hover {
-        border-color: red;
-    }
-    `
+    appearance: none;
+/* width: 12px;
+height: 12px;
+border-radius: 36px;
+background-color: ${props => props.selecionado? '#F00' : '#FFF'};
+&:hover {
+    border-color: red;
+}
+&:focus {
+    border-color: red;
+} */
+`
+
 
 const BotaoRadio = ({ texto }) => {
 
     const [selecionado, setSelecionado] = useState(false)
     
     return (<DivEstilizada>
-                <InputRadio onClick={() => {console.log('SELECIONADO:', selecionado); setSelecionado(!selecionado)}}/>
+                <InputRadio type="radio" onClick={() => {console.log('SELECIONADO:', selecionado); setSelecionado(!selecionado)}}/>
                 <Tipografia variante='body' componente='body' >
                     {texto}
                 </Tipografia>
