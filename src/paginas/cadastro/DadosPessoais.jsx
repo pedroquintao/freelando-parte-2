@@ -87,13 +87,11 @@ const DadosPessoais = () => {
                 </Link>
             </Col>
             <Col lg={6} md={6} sm={6}>
-                <Botao>
-                    <Link to='/cadastro/concluido'>
-                        <Botao>
-                            Proxima
-                        </Botao>
-                    </Link>
-                </Botao>
+                <Link to='/cadastro/concluido'>
+                    <Botao>
+                        Proxima
+                    </Botao>
+                </Link>
             </Col>
         </Row>
     </div>)

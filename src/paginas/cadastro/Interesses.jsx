@@ -54,13 +54,11 @@ const Interesse = () => {
                 </Link>
             </Col>
             <Col lg={6} md={6} sm={6}>
-                <Botao>
                     <Link to='/cadastro/dados-pessoais'>
                         <Botao>
                             Proxima
                         </Botao>
                     </Link>
-                </Botao>
             </Col>
         </Row>
     </div>)

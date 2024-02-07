@@ -21,7 +21,7 @@ const BotaoPrimarioEstilizado = styled.button`
     }
 `
 const BotaoSecundarioEstilizado = styled.button`
-    background:  ${props => props.theme.cores.neutras.b};
+    background: ${props => props.theme.cores.secundarias.a};
     color: ${props => props.theme.cores.primarias.b};
     border: 2px solid ${props => props.theme.cores.primarias.b};
     border-radius: ${props => props.theme.espacamentos.s};
