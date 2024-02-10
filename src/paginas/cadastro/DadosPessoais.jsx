@@ -6,6 +6,7 @@ import { Botao } from "../../componentes/Botao/Botao"
 import { Link } from "react-router-dom"
 import { CampoTexto } from "../../componentes/CampoTexto/CampoTexto"
 import { ListaSuspensa } from "../../componentes/ListaSuspensa/ListaSuspensa"
+import { useCadastroUsuarioContext } from "../../contexto/CadastroUsuario"
 
 
 const estadosBrasileiros = [
@@ -40,6 +41,8 @@ const estadosBrasileiros = [
   
 const DadosPessoais = () => {
 
+    const { usuario, setNomeCompleto } = useCadastroUsuarioContext()
+
     return (
     <div>
         <div style={{textAlign: 'center'}}>
@@ -54,7 +57,11 @@ const DadosPessoais = () => {
         </div>
         <Row>
         <Col>
-            <CampoTexto titulo="Nome Completo" />
+            <CampoTexto 
+                titulo="Nome Completo" 
+                valor={usuario.nomeCompleto}
+                onChange={setNomeCompleto}
+            />
         </Col>
         </Row>
         <Row>
