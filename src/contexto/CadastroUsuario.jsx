@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const usuarioInicial = {
     perfil: '',
@@ -20,6 +21,8 @@ export const CadastroUsuarioContext = createContext({
     setEmail: () => null,
     setSenha: () => null,
     setSenhaConfirmada: () => null,
+    submeterUsuario: () => null,
+    possoSelecionarInteresse: () => null
 })
 
 export const useCadastroUsuarioContext = () => {
@@ -27,6 +30,8 @@ export const useCadastroUsuarioContext = () => {
 }
 
 export const CadastroUsuarioProvider = ({ children }) => {
+    
+    const navegar = useNavigate();
 
     const [usuario, setUsuario] = useState(usuarioInicial)
 
@@ -95,6 +100,15 @@ export const CadastroUsuarioProvider = ({ children }) => {
         })
     }
 
+    const submeterUsuario = () => {
+        console.log(usuario)
+        navegar('/cadastro/concluido')
+    }
+
+    const possoSelecionarInteresse = () => {
+        return !!usuario.perfil //Esses dois !! são utilizados somente para converter usuario.perfil em booleano
+    }
+
 const contexto = {
     usuario,
     setPerfil,
@@ -105,6 +119,8 @@ const contexto = {
     setEmail,
     setSenha,
     setSenhaConfirmada,
+    submeterUsuario,
+    possoSelecionarInteresse
 }
 
     return (

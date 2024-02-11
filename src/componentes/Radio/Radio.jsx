@@ -1,20 +1,5 @@
 import styled from "@emotion/styled";
 
-// const DivEstilizada = styled.div`
-//     display: flex;
-//     `
-// const InputRadio = styled.input`
-//     width: 12px;
-//     height: 12px;
-//     border-radius: 36px;
-//     background-color: ${props => props.selecionado? '#F00' : '#FFF'};
-//     &:hover {
-//         border-color: red;
-//     }
-//     &:focus {
-//         border-color: red;
-//     }
-//     `
 const LabelEstilizada = styled.label`
     display: flex;
     align-items: center;
@@ -41,7 +26,7 @@ const LabelEstilizada = styled.label`
         margin-right: 10px;
         cursor: pointer;
         background-color: ${props => (props.checked ? props.theme.cores.primarias.b : props.theme.cores.neutras.c)};
-        border-color: ${props => (props.checked ? props.theme.cores.primarias.b : 'inherit')};
+        border-color: ${props => (props.checked ? props.theme.cores.neutras.a : 'inherit')};
     }
 `;
 

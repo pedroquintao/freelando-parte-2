@@ -1,5 +1,3 @@
-// import { useState } from "react"
-// import GrupoRadio from "../../componentes/Radio/GrupoRadio"
 import { Tipografia } from "../../componentes/Tipografia/Tipografia"
 import { Col, Row } from "react-grid-system"
 import { Botao } from "../../componentes/Botao/Botao"
@@ -47,14 +45,17 @@ const DadosPessoais = () => {
         setCidade, 
         setEmail, 
         setUf,
-        setInteresse, 
-        setPerfil, 
         setSenha, 
-        setSenhaConfirmada
+        setSenhaConfirmada,
+        submeterUsuario
      } = useCadastroUsuarioContext()
-
+    
+    const finalizarCadastro = (e) => {
+        e.preventDefault();
+        submeterUsuario();
+    }
     return (
-    <div>
+    <form onSubmit={finalizarCadastro}>
         <div style={{textAlign: 'center'}}>
             <Tipografia componente="h1" variante="h1">
                     Crie seu cadastro
@@ -122,15 +123,15 @@ const DadosPessoais = () => {
                     </Botao>
                 </Link>
             </Col>
-            <Col lg={6} md={6} sm={6}>
-                <Link to='/cadastro/concluido'>
+            <Col style={{textAlign: 'right'}} lg={6} md={6} sm={6}>
+                {/* <Link to='/cadastro/concluido'> */}
                     <Botao>
                         Proxima
                     </Botao>
-                </Link>
+                {/* </Link> */}
             </Col>
         </Row>
-    </div>)
+    </form>)
 }
 
 export default DadosPessoais
