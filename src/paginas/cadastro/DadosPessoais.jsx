@@ -1,5 +1,5 @@
-import { useState } from "react"
-import GrupoRadio from "../../componentes/Radio/GrupoRadio"
+// import { useState } from "react"
+// import GrupoRadio from "../../componentes/Radio/GrupoRadio"
 import { Tipografia } from "../../componentes/Tipografia/Tipografia"
 import { Col, Row } from "react-grid-system"
 import { Botao } from "../../componentes/Botao/Botao"
@@ -41,7 +41,17 @@ const estadosBrasileiros = [
   
 const DadosPessoais = () => {
 
-    const { usuario, setNomeCompleto } = useCadastroUsuarioContext()
+    const { 
+        usuario, 
+        setNomeCompleto, 
+        setCidade, 
+        setEmail, 
+        setUf,
+        setInteresse, 
+        setPerfil, 
+        setSenha, 
+        setSenhaConfirmada
+     } = useCadastroUsuarioContext()
 
     return (
     <div>
@@ -66,23 +76,42 @@ const DadosPessoais = () => {
         </Row>
         <Row>
             <Col lg={4} md={4} sm={4}>
-                <ListaSuspensa opcoes={estadosBrasileiros} titulo="Estado" />
+                <ListaSuspensa  titulo="Estado" 
+                                opcoes={estadosBrasileiros}
+                                valor={usuario.uf}
+                                onChange={setUf}
+                />
             </Col>
             <Col lg={8} md={8} sm={8}>
-                <CampoTexto titulo="Cidade" />
+                <CampoTexto titulo="Cidade"
+                            valor={usuario.cidade}
+                            onChange={setCidade}
+                />
             </Col>
         </Row>
         <Row>
             <Col>
-                <CampoTexto titulo="E-mail" />
+                <CampoTexto titulo="E-mail" 
+                            valor={usuario.email}
+                            onChange={setEmail}
+                            tipo="email"
+                />
             </Col>
         </Row>
         <Row>
             <Col lg={6} md={6} sm={6}>
-                <CampoTexto titulo="Senha" />
+                <CampoTexto titulo="Senha"
+                            valor={usuario.senha}
+                            onChange={setSenha}
+                            tipo="password"
+                />
             </Col>
             <Col lg={6} md={6} sm={6}>
-                <CampoTexto titulo="Repita a senha" />
+                <CampoTexto titulo="Repita a senha" 
+                                valor={usuario.senhaConfirmada}
+                                onChange={setSenhaConfirmada}
+                                tipo="password"
+                />
             </Col>
         </Row>
         <Row>
